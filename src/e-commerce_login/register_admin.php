@@ -15,7 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (strlen($password) < 6) {
         $_SESSION['error'] = "Password minimal 6 karakter!";
     } else {
-        $check = $conn->prepare("SELECT * FROM users WHERE email = ?");
+        // Check if email already exists
+        $check = $conn->prepare("SELECT * FROM admins WHERE email = ?");
         $check->bind_param("s", $email);
         $check->execute();
         $result = $check->get_result();
@@ -23,13 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($result->num_rows > 0) {
             $_SESSION['error'] = "Email sudah terdaftar!";
         } else {
+            // Insert new admin
             $hashedPassword = hash_password($password);
-            $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO admins (username, email, password) VALUES (?, ?, ?)");
             $stmt->bind_param("sss", $username, $email, $hashedPassword);
 
             if ($stmt->execute()) {
                 $_SESSION['success'] = "Registrasi berhasil! Silakan login.";
-                header("Location: login_user.php");
+                header("Location: login_admin.php");
                 exit();
             } else {
                 $_SESSION['error'] = "Terjadi kesalahan saat menyimpan data.";
@@ -46,12 +48,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register User</title>
-    <link rel="stylesheet" href="style_user.css?v=<?= time(); ?>">
+    <title>Register Admin</title>
+    <link rel="stylesheet" href="styles_admin.css?v=<?= time(); ?>">
 </head>
 <body>
     <div class="login-container">
-        <h2>Register User</h2>
+        <h2>Register Admin</h2>
 
         <?php if (isset($_SESSION['error'])): ?>
             <div class="error_message"><?= htmlspecialchars($_SESSION['error']) ?></div>
@@ -72,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit">Register</button>
         </form>
 
-        <p>Sudah punya akun? <a href="login_user.php">Login</a></p>
+        <p>Sudah punya akun? <a href="login_admin.php">Login</a></p>
     </div>
 </body>
 </html>

@@ -1,0 +1,230 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, head {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    background-color: #4CAF50;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0 20px;
+    position: sticky; /* Menambahkan sticky */
+    top: 0; /* Agar tetap di atas saat scroll */
+    z-index: 1000; /* Untuk memastikan navbar tetap di atas konten lain */
+}
+
+header .logo img {
+    height: 60px;
+    margin: 15px;
+}
+
+.brand-name a {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-family: Arial Black, sans-serif;
+    margin-right: auto;
+}
+
+nav {
+    flex-grow: 1; /* Agar navigasi mengambil ruang yang tersisa */
+    display: flex;
+    justify-content: center; /* Menjaga menu agar berada di tengah */
+    
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    font-size: 25px;
+    text-align: center;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.search-cart {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin-left: 20px;
+    position: relative; /* Membuat posisi relatif untuk tombol di dalam */
+}
+
+.search-cart input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px; /* Memberi ruang untuk ikon pencarian */
+    font-size: 16px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+}
+
+.search-button {
+    position: absolute; /* Ikon berada dalam kotak input */
+    right: 48px;
+    top: 28px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    font-size: 25px;
+    color: #000;
+    cursor: pointer;
+}
+
+.user-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.basket-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 25px;
+    margin: 10px;
+}
+
+/* Layout adjustments */
+.product-detail {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.detail-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    border: 2px solid #ddd;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.product-image img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+.product-info {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.product-info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.product-info p {
+    font-size: 16px;
+    color: #333;
+}
+
+.product-info .price {
+    font-size: 22px;
+    color: #4CAF50;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Quantity input field */
+.quantity {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.quantity input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 50px;
+    text-align: center;
+}
+
+/* Button container */
+.btn-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-detail {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.btn-detail:hover {
+    background-color: #45a049;
+}
+
+.btn-actions {
+    border-top: 2px solid #ddd;
+    padding-top: 15px;
+}
+
+/* Footer */
+footer {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer .footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+footer .footer-left, footer .footer-right {
+    flex: 1;
+    margin: 10px;
+}
+
+footer .footer-right a {
+    color: white;
+    text-decoration: none;
+    margin: 5px 0;
+    display: block;
+}
+
+footer .footer-right a:hover {
+    text-decoration: underline;
+}
